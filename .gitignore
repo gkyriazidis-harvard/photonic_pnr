@@ -1,0 +1,10 @@
+*~
+~.bkp
+~.swp
+~.tmp
+*.xml
+*.log*
+tb*
+rtl*
+rundir_*
+output_*

@@ -1,0 +1,51 @@
+-- parameter file for importing verilog to virtuoso using 'ihdl'
+--
+-- see the user guide: $CDS_HOME/verinuser/verinuser.pdf
+-- e.g., run:
+-- evince /u/cadence/IC/6.17.706/doc/verinuser/verinuser.pdf &
+-- see 2: Verilog In Standalone Mode (page 53)
+--
+-- parameters are described starting page 62
+--
+-- e.g., run using:
+-- ihdl -param ihdl_parameter -cdslib ./cds.lib <PATH TO SOURCE>
+
+-- Verilog In Form
+dest_sch_lib := ${lib}
+ref_lib_list := basic, ${refLibs}
+hdl_view_name := hdl
+-- ignore_node_file := 
+-- import_mod_file := 
+structural_views := 5
+functional_view_name := functional
+netlist_view_name := netlist
+schematic_view_name := schematic
+symbol_view_name := symbol
+log_file_name := ./verilogIn.log
+work_area := .
+map_file_name := ./verilogIn.map.table 
+import_if_exists := 1
+overwrite_symbol := 3
+import_cells := 0
+import_lib_cells := 0
+
+-- Global Net Options
+power_net := ${sigPower}
+ground_net := ${sigGround}
+glob_sig_names := ${sigPower}, ${sigGround}
+
+-- Schematic Generation Options Form
+sheet_symbol := Asize
+page_row_limit := 1024
+page_col_limit := 1024
+label_height := 10
+line_line_spacing := 0.125
+line_component_spacing := 0.125
+density_level := 100
+pin_placement := left_and_right_sides
+cds_thru_symbol := basic cds_thru symbol
+create_snap_space_prop := 0
+ref_sch_list := ${refSchs}
+pnr_max_inst := 20000
+pnr_max_port := 5000
+

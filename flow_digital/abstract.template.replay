@@ -1,0 +1,43 @@
+;; abstract replay file
+;; can see commands from log file when running abstract through 'abstract generator' in virtuoso
+;;
+;; run this with:
+;; abstract -replay this_file.replay -log output_log.log
+
+absSkillMode()
+;; absSetLibrary("digital_Top")
+absSetLibrary("${library_name}")
+
+;; import all the options
+;; absSetOption("ImportOptionsFile" "./abstract.options")
+absSetOption("ImportOptionsFile" "${fne_abstract_options}")
+absImportOptions()
+
+;; set up the bins, one of "Core", "IO", "Corner", "Block" (see .options file)
+absDeselectAllBins()
+absMoveCellToBin("${top}" "Block")
+
+;; select the cells we want to generate the abstract for
+absSelectBin("Block")
+absDeselectCells()
+absSelectCellFrom("${top}" "${top}")
+absSetOption("ViewLayout" "layout")
+
+;; change the output names
+absSetBinOption( "Block" "PinsOutputNames"            "${output_pattern}")
+
+;; this generates the abstract view in virtuoso
+absAbstract()
+
+;; this generates the lef file
+;; can also set the lef file name with absSetOption("ExportLEFFile" "out.lef")
+;; and can use absSetOption("ExportLEFCellListFile" "input_cell_list.txt")
+;; if you only want to write a subset of cells
+;;
+;; alternatively, the utility 'lefout' can generate .lef from the abstract view in virtuoso
+;; e.g.,
+;; lefout -lef out.lef -lib lib_name -cells "cell_name" -views "abstract" -noTech
+absSetOption("ExportLEFFile" "${fne_output_lef}")
+absExportLEF()
+
+absExit()

@@ -1,5 +1,5 @@
 # Flow_Digital
-This flow was developed to make the synthesis and placement process for Photnic Integrated Circuits (PICs) in industry-standard EDA tools an accessible and productive procedure. The flow alleviates the in-depth technical knowledge required to perform a physical implementation, which is specific for every set of tools, by creating an eXtensible Markup Language (XML) interface. The user can describe their design using XML structures, feed them to the scripts and receive a full physical implementation that follows the specifications.
+This flow was developed to make the synthesis and placement process for digital and mixed-signal integrated circuits (ICs) an accessible and productive procedure. The flow alleviates the in-depth technical knowledge required to perform a physical implementation, which is specific for every set of tools, by creating an eXtensible Markup Language (XML) interface. The user can describe their design using XML structures, feed them to the scripts and receive a full physical implementation that follows the specifications.
 
 ## Dependencies
 A list of the required EDA tools and Linux packages to run the flow, and their tested for compatibility version, is included below.
@@ -50,8 +50,7 @@ The simplification of the execution process was also a significant goal during t
 **sim**: Runs a behavioral simulation of the design using Synopsys VCS. The command (CMD) argument takes value from the list (RTL, SYN, PNR) and executes the source design files, the synthesized or the physical netlist respectively. The simulated waveforms are stored in .vcd and .vpd formats in the simulation output directory based on the dumpvars command specified in the testbench.<br />
 **wave**: Opens an GUI instance of the Synopsys DVE to scope the simulated waveforms.<br />
 **syn**: Executes the synthesis scripts on Cadence Genus  using the specified Register Transfer Level (RTL) sources. The synthesized netlist is exported in the synthesis output directory segment and follows the format Top_module.syn.v alongside several reports and log.<br />
-**pnr**: Executes the place-and-routing scripts on Cadence Innovus using the output of the synthesis operation. The physical layout is exported in the placement output directory in GDS II format and follows the format Top_module.gds alongside several reports and log.<br />
-**post**: Executes the post-processing scripts on Siemens CalibreDRV using the output of the place-and-route operation. The tapeout-ready layout replaces the placement output in GDS II format.
+**pnr**: Executes the place-and-routing scripts on Cadence Innovus3 using the output of the synthesis operation. The physical layout is exported in the placement output directory in GDS II format and follow the format Top_module.gds alongside several reports and log.<br />
 **rundir**: Creates the execution directory used by Cadence Virtuoso, based on the template specified in the technology configuration segment, which is the basis of several operations.<br />
 **layout**: Creates a library compatible with Cadence Virtuoso in the library output directory and converts the physical layout exported by the place-and-route operation and stores it.<br />
 **schematic**: Creates the schematic representation of the physical layout and attaches it in the library formed by the layout operation.<br />
