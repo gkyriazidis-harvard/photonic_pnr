@@ -93,7 +93,7 @@ foreach net ${doc.nets} {
 
 set doc.file [open $source w+]
 puts ${doc.file} ""
-puts ${doc.file} "// Processed by Harvard Nano-Design Group Photonic Pre-Processor"
+puts ${doc.file} "// Processed by Photonic Pre-Processor"
 puts ${doc.file} "// Processed on: [clock format [clock seconds] -format "%b %d %Y %H:%M:%S %Z"]"
 puts ${doc.file} ""
 puts ${doc.file} ${doc.segments.title}
